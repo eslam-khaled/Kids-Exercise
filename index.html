@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELO - XXX School</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffeb3b, #ff9800);
+            font-family: 'Comic Sans MS', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .home-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .btn {
+            font-size: 1.2rem;
+            margin: 10px;
+            padding: 15px 30px;
+        }
+
+        .exercise-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .exercise-container {
+            margin: 20px 0;
+        }
+
+        .animation-container {
+            width: 150px;
+            height: 200px;
+            margin: 10px auto;
+            position: relative;
+        }
+
+        .child-figure {
+            position: relative;
+            width: 50px;
+            height: 120px;
+            background-color: transparent;
+            animation: move 1.5s infinite ease-in-out;
+        }
+
+        .head {
+            position: absolute;
+            top: 0;
+            left: 15px;
+            width: 20px;
+            height: 20px;
+            background-color: #f1c40f;
+            border-radius: 50%;
+        }
+
+        .body {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: 30px;
+            height: 50px;
+            background-color: #3498db;
+        }
+
+        .left-arm, .right-arm {
+            position: absolute;
+            top: 25px;
+            width: 10px;
+            height: 40px;
+            background-color: #3498db;
+            transform-origin: top;
+            animation: swing-arms 1.5s infinite ease-in-out;
+        }
+
+        .left-arm {
+            left: -10px;
+        }
+
+        .right-arm {
+            right: -10px;
+        }
+
+        .left-leg, .right-leg {
+            position: absolute;
+            top: 70px;
+            width: 10px;
+            height: 50px;
+            background-color: #2ecc71;
+            transform-origin: top;
+            animation: move-legs 1.5s infinite ease-in-out;
+        }
+
+        .left-leg {
+            left: 5px;
+        }
+
+        .right-leg {
+            right: 5px;
+        }
+
+        @keyframes move {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes swing-arms {
+            0%, 100% {
+                transform: rotate(10deg);
+            }
+            50% {
+                transform: rotate(-10deg);
+            }
+        }
+
+        @keyframes move-legs {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(15deg);
+            }
+        }
+
+        .btn-home {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-home:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainContent">
+        <!-- Home Section -->
+        <div class="home-section">
+            <h1 class="display-4">ELO - XXX School</h1>
+            <p>Select an exercise program:</p>
+            <button class="btn btn-primary" onclick="loadExercises('beginner')">Beginner</button>
+            <button class="btn btn-secondary" onclick="loadExercises('advanced')">Advanced</button>
+            <button class="btn btn-danger" onclick="loadExercises('heros')">Heros with Special Needs</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const exercisesWithAnimations = {
+            beginner: [
+                { text: "Jump up and down 10 times!", guide: "Keep your arms by your sides and jump high." },
+                { text: "Stretch your arms high!", guide: "Reach for the sky and hold for 10 seconds." },
+                { text: "Touch your toes 5 times!", guide: "Bend down and touch your toes slowly." }
+            ],
+            advanced: [
+                { text: "Run in place for 30 seconds!", guide: "Lift your knees high while running." },
+                { text: "Do 10 squats!", guide: "Keep your back straight and bend your knees." },
+                { text: "Perform 5 push-ups!", guide: "Keep your body straight and lower to the ground." }
+            ],
+            heros: [
+                { text: "Lift arms and clap overhead!", guide: "Clap your hands above your head repeatedly." },
+                { text: "March in place for 20 seconds!", guide: "Lift your legs high while marching." },
+                { text: "Pretend to row a boat for 15 seconds!", guide: "Move your arms as if rowing." }
+            ]
+        };
+
+        function loadExercises(program) {
+            const selectedExercises = exercisesWithAnimations[program];
+
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = `<a href="#" class="btn-home" onclick="goHome()">Home</a>`;
+
+            selectedExercises.forEach((exercise) => {
+                const exerciseDiv = document.createElement('div');
+                exerciseDiv.className = 'exercise-section';
+                exerciseDiv.innerHTML = `
+                    <div class="exercise-container">
+                        <p>${exercise.text}<br><small>${exercise.guide}</small></p>
+                        <div class="animation-container">
+                            <div class="child-figure">
+                                <div class="head"></div>
+                                <div class="body"></div>
+                                <div class="left-arm"></div>
+                                <div class="right-arm"></div>
+                                <div class="left-leg"></div>
+                                <div class="right-leg"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                mainContent.appendChild(exerciseDiv);
+            });
+        }
+
+        function goHome() {
+            document.getElementById('mainContent').innerHTML = `
+                <div class="home-section">
+                    <h1 class="display-4">ELO - XXX School</h1>
+                    <p>Select an exercise program:</p>
+                    <button class="btn btn-primary" onclick="loadExercises('beginner')">Beginner</button>
+                    <button class="btn btn-secondary" onclick="loadExercises('advanced')">Advanced</button>
+                    <button class="btn btn-danger" onclick="loadExercises('heros')">Heros with Special Needs</button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
