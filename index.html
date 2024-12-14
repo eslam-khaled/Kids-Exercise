@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #88c9f5, #a0b0bb);
+            background-image: url("D:\\GitRepos\\Kids-Exercise\\Exercise.jpeg");
+            background-size: cover;
+            /* Make the image cover the entire background */
+            background-repeat: no-repeat;
+            /* Prevent tiling */
+            background-position: center;
+            /* Center the image */
             font-family: 'Comic Sans MS', sans-serif;
             margin: 0;
             padding: 0;
         }
+
 
         .home-section {
             text-align: center;
@@ -26,22 +34,36 @@
         }
 
         .exercise-section {
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            /* Stack all exercises vertically */
+            align-items: center;
+            /* Center-align each exercise container */
             text-align: center;
+            /* Ensure all text stays centered */
+            margin-top: 50px;
+            /* Add spacing from the top */
         }
 
         .exercise-container {
             display: flex;
-            justify-content: center; /* Centering the child figure */
-            align-items: center; /* Vertically align the items */
+            align-items: center;
+            /* Vertically center each exercise's content */
+            justify-content: center;
+            /* Center all content horizontally */
             margin: 20px 0;
-            gap: 20px; /* Space between text and animation */
+            /* Space between each exercise */
+            gap: 20px;
+            /* Space between text and animation */
         }
 
         .exercise-text {
-            font-size: 1.5rem; /* Bigger text */
-            font-weight: bold; /* Bold text */
-            text-align: left; /* Align text to the left */
+            font-size: 1.5rem;
+            /* Bigger text */
+            font-weight: bold;
+            /* Bold text */
+            text-align: left;
+            /* Align text to the left */
         }
 
         .animation-container {
@@ -77,7 +99,8 @@
             background-color: #3498db;
         }
 
-        .left-arm, .right-arm {
+        .left-arm,
+        .right-arm {
             position: absolute;
             top: 25px;
             width: 10px;
@@ -95,7 +118,8 @@
             right: -10px;
         }
 
-        .left-leg, .right-leg {
+        .left-leg,
+        .right-leg {
             position: absolute;
             top: 70px;
             width: 10px;
@@ -114,27 +138,36 @@
         }
 
         @keyframes move {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
         }
 
         @keyframes swing-arms {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: rotate(10deg);
             }
+
             50% {
                 transform: rotate(-10deg);
             }
         }
 
         @keyframes move-legs {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: rotate(0deg);
             }
+
             50% {
                 transform: rotate(15deg);
             }
@@ -154,17 +187,204 @@
         .btn-home:hover {
             background-color: #45a049;
         }
+
+        .school-info {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: rgba(255, 255, 255, 0.6);
+            /* Optional: Semi-transparent background for better contrast */
+        }
+
+        .school-title {
+            color: rgb(92, 94, 255);
+            font-size: 3rem;
+            /* Adjust the size as needed */
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-weight: bold;
+            /* Bold for better visibility */
+            text-shadow:
+                -1px -1px 0 black,
+                /* Top-left shadow */
+                1px -1px 0 black,
+                /* Top-right shadow */
+                -1px 1px 0 black,
+                /* Bottom-left shadow */
+                1px 1px 0 black;
+            /* Bottom-right shadow */
+        }
+
+        .outlined-text {
+            color: white;
+            /* White text color */
+            font-size: 1.5rem;
+            /* Adjust as needed */
+            font-weight: bold;
+            /* Bold for better visibility */
+            text-shadow:
+                -1px -1px 0 black,
+                /* Top-left shadow */
+                1px -1px 0 black,
+                /* Top-right shadow */
+                -1px 1px 0 black,
+                /* Bottom-left shadow */
+                1px 1px 0 black;
+            /* Bottom-right shadow */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            /* Center-align buttons horizontally */
+            align-items: center;
+            /* Align buttons vertically */
+            gap: 20px;
+            /* Space between buttons */
+            margin-top: 30px;
+        }
+
+        /* General button styles */
+        .circular-btn {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+
+        /* Unique colors for each button */
+        .beginner-btn {
+            background-color: #4caf50;
+            /* Green */
+            color: white;
+        }
+
+        .advanced-btn {
+            background-color: #f44336;
+            /* Red */
+            color: white;
+        }
+
+        .heros-btn {
+            background-color: #2196f3;
+            /* Blue */
+            color: white;
+        }
+
+
+        .circular-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .circular-btn:active {
+            transform: scale(1);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .circular-btn {
+            animation: bounce 1.5s infinite ease-in-out;
+            /* Adds a bouncing animation */
+        }
+
+        .exercise-text p {
+            color: white;
+            /* Text color */
+            font-size: 1.5rem;
+            /* Bigger font size */
+            font-weight: bold;
+            /* Bold text */
+            text-shadow:
+                -1px -1px 0 black,
+                /* Top-left shadow */
+                1px -1px 0 black,
+                /* Top-right shadow */
+                -1px 1px 0 black,
+                /* Bottom-left shadow */
+                1px 1px 0 black;
+            /* Bottom-right shadow */
+            margin: 10px 0;
+            /* Optional: Adds spacing between lines */
+        }
+
+        .exercise-text small {
+            color: white;
+            /* Text color */
+            font-size: 1.2rem;
+            /* Slightly smaller font for the guide */
+            font-weight: bold;
+            /* Bold text */
+            text-shadow:
+                -1px -1px 0 black,
+                /* Top-left shadow */
+                1px -1px 0 black,
+                /* Top-right shadow */
+                -1px 1px 0 black,
+                /* Bottom-left shadow */
+                1px 1px 0 black;
+            /* Bottom-right shadow */
+            display: block;
+            /* Ensures proper alignment under main text */
+        }
+
+        .exercise-container {
+            display: flex;
+            align-items: center;
+            /* Vertically center the items */
+            justify-content: flex-start;
+            /* Align items to the left */
+            margin: 20px 0;
+            /* Space between each exercise */
+            gap: 20px;
+            /* Space between text and animation */
+        }
+
+        .exercise-text {
+            font-size: 1.8rem;
+            /* Bigger text for clarity */
+            font-weight: bold;
+            /* Bold text */
+            text-align: center;
+            /* Center-align the text itself */
+            color: white;
+            text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+            /* Add black outline */
+        }
     </style>
 </head>
+
 <body>
     <div id="mainContent">
         <!-- Home Section -->
         <div class="home-section">
-            <h1 class="display-4">ELO - XXX School</h1>
-            <p>Select an exercise program:</p>
-            <button class="btn btn-primary" onclick="loadExercises('beginner')">Beginner</button>
-            <button class="btn btn-secondary" onclick="loadExercises('advanced')">Advanced</button>
-            <button class="btn btn-danger" onclick="loadExercises('heros')">Heros with Special Needs</button>
+            <h1 class="school-title">Al Rowad Al Andalus School </h1>
+            <h1 class="school-title"> Ataa Educational Company </h1>
+            <h1 class="school-title">ELO Primary Section</h1>
+            <h3 class="outlined-text">Select an exercise program:</h3>
+            <div class="button-container">
+                <button class="circular-btn beginner-btn" onclick="loadExercises('beginner')">Beginner</button>
+                <button class="circular-btn advanced-btn" onclick="loadExercises('advanced')">Advanced</button>
+                <button class="circular-btn heros-btn" onclick="loadExercises('heros')">Heros</button>
+            </div>
+
         </div>
     </div>
 
@@ -190,46 +410,53 @@
         };
 
         function loadExercises(program) {
-            const selectedExercises = exercisesWithAnimations[program];
+    const selectedExercises = exercisesWithAnimations[program];
 
-            const mainContent = document.getElementById('mainContent');
-            mainContent.innerHTML = `<a href="#" class="btn-home" onclick="goHome()">Home</a>`;
+    const mainContent = document.getElementById('mainContent');
+    mainContent.innerHTML = `<a href="#" class="btn-home" onclick="goHome()">← Home</a>`;
 
-            selectedExercises.forEach((exercise) => {
-                const exerciseDiv = document.createElement('div');
-                exerciseDiv.className = 'exercise-section';
-                exerciseDiv.innerHTML = `
-                    <div class="exercise-container">
-                        <div class="exercise-text">
-                            <p>${exercise.text}<br><small>${exercise.guide}</small></p>
-                        </div>
-                        <div class="animation-container">
-                            <div class="child-figure">
-                                <div class="head"></div>
-                                <div class="body"></div>
-                                <div class="left-arm"></div>
-                                <div class="right-arm"></div>
-                                <div class="left-leg"></div>
-                                <div class="right-leg"></div>
-                            </div>
-                        </div>
+    selectedExercises.forEach((exercise) => {
+        const exerciseDiv = document.createElement('div');
+        exerciseDiv.className = 'exercise-section';
+        exerciseDiv.innerHTML = `
+            <div class="exercise-container">
+                <div class="exercise-text">
+                    <p>${exercise.text}</p>
+                    <small>${exercise.guide}</small>
+                </div>
+                <div class="animation-container">
+                    <div class="child-figure">
+                        <div class="head"></div>
+                        <div class="body"></div>
+                        <div class="left-arm"></div>
+                        <div class="right-arm"></div>
+                        <div class="left-leg"></div>
+                        <div class="right-leg"></div>
                     </div>
-                `;
-                mainContent.appendChild(exerciseDiv);
-            });
-        }
+                </div>
+            </div>
+        `;
+        mainContent.appendChild(exerciseDiv);
+    });
+}
+
+
+
 
         function goHome() {
             document.getElementById('mainContent').innerHTML = `
                 <div class="home-section">
-                    <h1 class="display-4">ELO - XXX School</h1>
-                    <p>Select an exercise program:</p>
-                    <button class="btn btn-primary" onclick="loadExercises('beginner')">Beginner</button>
-                    <button class="btn btn-secondary" onclick="loadExercises('advanced')">Advanced</button>
-                    <button class="btn btn-danger" onclick="loadExercises('heros')">Heros with Special Needs</button>
+                    <h1 style="color: rgb(92, 94, 255)" class="display-4">Al Rowad Al Andalus School </h1>
+                    <h1 style="color: rgb(92, 94, 255)" class="display-4"> Ataa Educational Company </h1>
+                    <h1 style="color: rgb(92, 94, 255)" class="display-4">ELO Primary Section</h1>
+                    <h3 class="outlined-text">Select an exercise program:</h3>
+                <button class="circular-btn beginner-btn" onclick="loadExercises('beginner')">Beginner</button>
+                <button class="circular-btn advanced-btn" onclick="loadExercises('advanced')">Advanced</button>
+                <button class="circular-btn heros-btn" onclick="loadExercises('heros')">Heros</button>
                 </div>
             `;
         }
     </script>
 </body>
+
 </html>
