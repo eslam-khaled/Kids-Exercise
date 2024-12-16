@@ -386,6 +386,16 @@
             /* Add black outline */
             
         }
+
+        .exercise-image {
+    width: 100%;
+    max-width: 300px; /* Set a maximum width */
+    height: auto;
+    margin-top: 15px; /* Add some spacing from the button */
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
     </style>
 </head>
 
@@ -427,13 +437,36 @@
             ]
         };
 
-        function loadExercises(program) {
-    const selectedExercises = exercisesWithAnimations[program];
+        const videoLinks = {
+    "Jump up and down 10 times!": "https://www.youtube.com/watch?v=buZARC4yAFQ",
+    "Stretch your arms high!": "https://www.youtube.com/watch?v=VULt--bcWd0",
+    "Touch your toes 5 times!": "https://www.youtube.com/watch?v=6XM-Jzq-pOA",
 
+    "Run in place for 30 seconds!": "https://www.youtube.com/watch?v=5DWA_bsRYAc",
+    "Do 10 squats!": "https://www.youtube.com/watch?v=YaXPRqUwItQ",
+    "Perform 5 push-ups!": "https://www.youtube.com/watch?v=IODxDxX7oi4",
+
+    "Lift arms and clap overhead!": "https://www.youtube.com/watch?v=Wvxo31JQ3t4",
+    "March in place for 20 seconds!": "https://www.youtube.com/watch?v=BkyPNJ6JfhY",
+    "Pretend to row a boat for 15 seconds!": "https://www.youtube.com/watch?v=6XM-Jzq-pOA",
+    // Add all other exercises here with their corresponding video links
+};
+
+const exerciseImages = {
+    "Exercise 1": "./assets/images/exercise1.jpeg",
+    "Exercise 2": "./assets/images/exercise2.jpg",
+    "Exercise 3": "./assets/images/exercise3.jpg",
+    // Add more mappings for each exercise
+};
+
+function loadExercises(program) {
+    const selectedExercises = exercisesWithAnimations[program];
     const mainContent = document.getElementById('mainContent');
     mainContent.innerHTML = `<a href="#" class="btn-home" onclick="goHome()">← Home</a>`;
 
     selectedExercises.forEach((exercise) => {
+        const videoLink = videoLinks[exercise.text];
+        const imagePath = exerciseImages[exercise.text] || "./assets/images/exercise1.jpeg"; // Default image if not found
         const exerciseDiv = document.createElement('div');
         exerciseDiv.className = 'exercise-section';
         exerciseDiv.innerHTML = `
@@ -441,6 +474,8 @@
                 <div class="exercise-text">
                     <p>${exercise.text}</p>
                     <small>${exercise.guide}</small>
+                    <a href="${videoLink}" target="_blank" class="btn btn-primary">Watch on YouTube</a>
+                    <img src="${imagePath}" alt="${exercise.text}" class="exercise-image">
                 </div>
                 <div class="animation-container">
                     <div class="child-figure">
@@ -457,6 +492,7 @@
         mainContent.appendChild(exerciseDiv);
     });
 }
+
 
 
 
