@@ -21,22 +21,26 @@
             padding: 0;
         }
 
-        html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-}
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
+        }
 
-/* Make sure the main content area fills the entire height */
-#mainContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* 100% of the viewport height */
-    padding: 0 20px; /* Add some padding to avoid touching edges */
-}
+        /* Make sure the main content area fills the entire height */
+        #mainContent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            /* Semi-transparent overlay for better contrast */
+        }
 
 
         .home-section {
@@ -195,7 +199,7 @@
             top: 10px;
             left: 10px;
             padding: 10px 20px;
-            background-color: #4caf50;
+            background-color: #57a5fd;
             color: white;
             border-radius: 5px;
             text-decoration: none;
@@ -213,22 +217,11 @@
         }
 
         .school-title {
-            color: rgb(92, 94, 255);
-            font-size: 3rem;
-            /* Adjust the size as needed */
+            font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 20px;
-            font-weight: bold;
-            /* Bold for better visibility */
-            text-shadow:
-                -1px -1px 0 black,
-                /* Top-left shadow */
-                1px -1px 0 black,
-                /* Top-right shadow */
-                -1px 1px 0 black,
-                /* Bottom-left shadow */
-                1px 1px 0 black;
-            /* Bottom-right shadow */
+            margin-bottom: 10px;
+            color: #ffd700;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
         }
 
         .outlined-text {
@@ -318,7 +311,7 @@
         }
 
         .circular-btn {
-            animation: bounce 1.5s infinite ease-in-out;
+            animation: bounce 2s infinite ease-in-out;
             /* Adds a bouncing animation */
         }
 
@@ -384,18 +377,19 @@
             color: white;
             text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
             /* Add black outline */
-            
+
         }
 
         .exercise-image {
-    width: 100%;
-    max-width: 300px; /* Set a maximum width */
-    height: auto;
-    margin-top: 15px; /* Add some spacing from the button */
-    border: 2px solid #ddd;
-    border-radius: 8px;
-}
-
+            width: 100%;
+            max-width: 300px;
+            /* Set a maximum width */
+            height: auto;
+            margin-top: 15px;
+            /* Add some spacing from the button */
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
     </style>
 </head>
 
@@ -438,45 +432,51 @@
         };
 
         const videoLinks = {
-    "Jump up and down 10 times!": "https://www.youtube.com/watch?v=buZARC4yAFQ",
-    "Stretch your arms high!": "https://www.youtube.com/watch?v=VULt--bcWd0",
-    "Touch your toes 5 times!": "https://www.youtube.com/watch?v=6XM-Jzq-pOA",
+            "Jump up and down 10 times!": "https://www.youtube.com/watch?v=buZARC4yAFQ",
+            "Stretch your arms high!": "https://www.youtube.com/watch?v=VULt--bcWd0",
+            "Touch your toes 5 times!": "https://www.youtube.com/watch?v=6XM-Jzq-pOA",
 
-    "Run in place for 30 seconds!": "https://www.youtube.com/watch?v=5DWA_bsRYAc",
-    "Do 10 squats!": "https://www.youtube.com/watch?v=YaXPRqUwItQ",
-    "Perform 5 push-ups!": "https://www.youtube.com/watch?v=IODxDxX7oi4",
+            "Run in place for 30 seconds!": "https://www.youtube.com/watch?v=5DWA_bsRYAc",
+            "Do 10 squats!": "https://www.youtube.com/watch?v=YaXPRqUwItQ",
+            "Perform 5 push-ups!": "https://www.youtube.com/watch?v=IODxDxX7oi4",
 
-    "Lift arms and clap overhead!": "https://www.youtube.com/watch?v=Wvxo31JQ3t4",
-    "March in place for 20 seconds!": "https://www.youtube.com/watch?v=BkyPNJ6JfhY",
-    "Pretend to row a boat for 15 seconds!": "https://www.youtube.com/watch?v=6XM-Jzq-pOA",
-    // Add all other exercises here with their corresponding video links
-};
+            "Lift arms and clap overhead!": "https://www.youtube.com/watch?v=Wvxo31JQ3t4",
+            "March in place for 20 seconds!": "https://www.youtube.com/watch?v=BkyPNJ6JfhY",
+            "Pretend to row a boat for 15 seconds!": "https://www.youtube.com/shorts/KnF7J5nc8CA",
+        };
 
-const exerciseImages = {
-    "Exercise 1": "./assets/images/exercise1.jpeg",
-    "Exercise 2": "./assets/images/exercise2.jpg",
-    "Exercise 3": "./assets/images/exercise3.jpg",
-    // Add more mappings for each exercise
-};
+        const exerciseImages = {
+            "Jump up and down 10 times!": "./assets/images/Jump up and down 10 times!.jpeg",
+            "Stretch your arms high!": "./assets/images/Stretch your arms high!.jpg",
+            "Touch your toes 5 times!": "./assets/images/TouchToes.jpg",
 
-function loadExercises(program) {
-    const selectedExercises = exercisesWithAnimations[program];
-    const mainContent = document.getElementById('mainContent');
-    mainContent.innerHTML = `<a href="#" class="btn-home" onclick="goHome()">← Home</a>`;
+            "Run in place for 30 seconds!": "./assets/images/RunInPlace.jpeg",
+            "Do 10 squats!": "./assets/images/Squats.jpg",
+            "Perform 5 push-ups!": "./assets/images/Push.jpg",
 
-    selectedExercises.forEach((exercise) => {
-        const videoLink = videoLinks[exercise.text];
-        const imagePath = exerciseImages[exercise.text] || "./assets/images/exercise1.jpeg"; // Default image if not found
-        const exerciseDiv = document.createElement('div');
-        exerciseDiv.className = 'exercise-section';
-        exerciseDiv.innerHTML = `
+            "Lift arms and clap overhead!": "./assets/images/LiftArmsAndClapOverhead.jpg",
+            "March in place for 20 seconds!": "./assets/images/MarchInPlace.jpg",
+            "Pretend to row a boat for 15 seconds!": "./assets/images/rowBoat.jpg"
+        };
+
+        function loadExercises(program) {
+            const selectedExercises = exercisesWithAnimations[program];
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = `<a href="#" class="btn-home" onclick="goHome()">← Home</a>`;
+
+            selectedExercises.forEach((exercise) => {
+                const videoLink = videoLinks[exercise.text];
+                const imagePath = exerciseImages[exercise.text] || "./assets/images/exercise1.jpeg"; // Default image if not found
+                const exerciseDiv = document.createElement('div');
+                exerciseDiv.className = 'exercise-section';
+                exerciseDiv.innerHTML = `
             <div class="exercise-container">
-                <div class="exercise-text">
-                    <p>${exercise.text}</p>
-                    <small>${exercise.guide}</small>
-                    <a href="${videoLink}" target="_blank" class="btn btn-primary">Watch on YouTube</a>
-                    <img src="${imagePath}" alt="${exercise.text}" class="exercise-image">
-                </div>
+    <div class="exercise-text">
+        <h2>${exercise.text}</h2>
+        <p>${exercise.guide}</p>
+        <img src="${imagePath}" alt="${exercise.text}" class="exercise-image">
+        <a href="${videoLink}" target="_blank" class="btn btn-primary">Watch on YouTube</a>
+    </div>
                 <div class="animation-container">
                     <div class="child-figure">
                         <div class="head"></div>
@@ -489,16 +489,16 @@ function loadExercises(program) {
                 </div>
             </div>
         `;
-        mainContent.appendChild(exerciseDiv);
-    });
-}
+                mainContent.appendChild(exerciseDiv);
+            });
+        }
 
 
 
 
 
-function goHome() {
-    document.getElementById('mainContent').innerHTML = `
+        function goHome() {
+            document.getElementById('mainContent').innerHTML = `
         <div class="home-section">
             <h1 class="school-title">Al Rowad Al Andalus School</h1>
             <h1 class="school-title">Ataa Educational Company</h1>
@@ -511,7 +511,7 @@ function goHome() {
             </div>
         </div>
     `;
-}
+        }
 
     </script>
 </body>
